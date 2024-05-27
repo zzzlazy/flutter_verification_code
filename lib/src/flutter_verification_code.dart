@@ -114,12 +114,10 @@ class _VerificationCodeState extends State<VerificationCode> {
     super.initState();
     Future.delayed(Duration(milliseconds: 100), () {
       for (var i = 0; i < widget.length; i++) {
-        _listFocusNode[i].addListener(() {
-          if (_listFocusNode[i].hasFocus) {
+        _listControllerText[i].addListener(() {
+          if (_listControllerText[i].text.length > 0) {
             _listControllerText[i].selection = TextSelection.fromPosition(
                 TextPosition(offset: _listControllerText[i].text.length));
-          } else {
-            print('unfocus');
           }
         });
       }
